@@ -17,6 +17,11 @@ const GlobalStyle = createGlobalStyle`
     color: var(--color-secondary);
     background-color: var(--color-back);
   }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
 `;
 
 export default GlobalStyle;
