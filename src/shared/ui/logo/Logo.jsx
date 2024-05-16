@@ -1,9 +1,10 @@
-import logoIcon from '/icons/logo.svg';
+import Logo from '../../assets/icons/logo.svg?react';
+import { StyledLogo } from './StyledLogo';
 
 export const Logo = () => {
   return (
-    <>
-      <img src={logoIcon} alt="logo icon" />
-    </>
+    <StyledLogo>
+      <Logo />
+    </StyledLogo>
   );
 };
