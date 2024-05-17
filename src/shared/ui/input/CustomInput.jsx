@@ -1,5 +1,11 @@
 import { StyledInput } from './Input.styled';
 
-export const CustomInput = ({ children, placeholder }) => {
-  return <StyledInput placeholder={placeholder}>{children}</StyledInput>;
+export const CustomInput = ({ placeholder, span, ...inputProps }) => {
+  return (
+    <StyledInput
+      placeholder={placeholder}
+      span={span}
+      {...inputProps}
+    ></StyledInput>
+  );
 };
