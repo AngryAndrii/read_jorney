@@ -1,5 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
+import '../App.css';
+import '../fonts/gilroy/Gilroy-Bold.ttf';
+import '../fonts/gilroy/Gilroy-Medium.ttf';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -11,12 +14,25 @@ const GlobalStyle = createGlobalStyle`
     --color-gray-dark: #262626;
     --color-blue: #4f92f7;
     --color-green: #30B94D;
+    --radius-30: 30px;
   }
   
   body {
     color: var(--color-secondary);
     background-color: var(--color-back);
+    letter-spacing: 2%;
   }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .title {
+    font-family: "GilroyBold";
+    line-height: 1;
+  }
+
 `;
 
 export default GlobalStyle;

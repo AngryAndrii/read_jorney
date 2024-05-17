@@ -1,8 +1,20 @@
 import { Outlet, Link } from 'react-router-dom';
+import { Wrapper } from '../shared';
+import { useLocation } from 'react-router-dom';
 
 export const Layout = () => {
+  let path = useLocation();
+
+  if (path.pathname == '/register') {
+    return (
+      <Wrapper>
+        <Outlet />
+      </Wrapper>
+    );
+  }
+
   return (
-    <>
+    <Wrapper>
       <nav>
         <ul>
           <li>
@@ -22,7 +34,8 @@ export const Layout = () => {
           </li>
         </ul>
       </nav>
+
       <Outlet />
-    </>
+    </Wrapper>
   );
 };
