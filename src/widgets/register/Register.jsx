@@ -1,3 +1,4 @@
+import RegisterForm from '../../app/features/registerForm/RegisterForm';
 import { Logo } from '../../shared/ui/';
 import { Title } from '../../shared/ui/';
 import { StyledRegister } from './Register.styled';
@@ -9,6 +10,7 @@ export const Register = () => {
         <Logo />
       </div>
       <Title />
+      <RegisterForm />
     </StyledRegister>
   );
 };
