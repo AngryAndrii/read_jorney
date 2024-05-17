@@ -11,14 +11,40 @@ export default function RegisterForm() {
 
   const onSubmit = data => console.log(data);
 
-  console.log(watch('example')); // watch input value by passing the name of it
+  // console.log(watch('example'));
+  // watch('name');
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <CustomInput placeholder={'Name:'} />
-      <input placeholder="lol" defaultValue="test" {...register('example')} />
-      <input {...register('exampleRequired', { required: true })} />
-      {errors.exampleRequired && <span>This field is required</span>}
+      {/* <CustomInput
+        span={'Name:'}
+        placeholder={'Ilona Ratushniak'}
+        {...register('name')}
+        ref={null}
+      />
+      {errors.name && <span>This field is required</span>}
+      <CustomInput
+        span={'Mail:'}
+        placeholder={'Your@email.com'}
+        {...register('mail')}
+        ref={null}
+      />
+      {errors.mail && <span>This field is required</span>}
+      <CustomInput
+        span={'Password:'}
+        placeholder={'Yourpasswordhere'}
+        {...register('pass')}
+        ref={null}
+      />
+      
+      {errors.pass && <span>This field is required</span>} */}
+      <CustomInput
+        register={register}
+        span={'Password:'}
+        placeholder={'Yourpasswordhere'}
+        {...register('pass')}
+      />
+      <input type="text" {...register('name')} />
       <input type="submit" />
     </form>
   );
