@@ -39,7 +39,6 @@ export default function RegisterForm() {
       
       {errors.pass && <span>This field is required</span>} */}
       <CustomInput
-        register={register}
         span={'Password:'}
         placeholder={'Yourpasswordhere'}
         {...register('pass')}
