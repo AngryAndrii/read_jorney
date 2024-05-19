@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { CustomInput } from '../../../shared/ui';
+import { Button, CustomInput, CustomLink } from '../../../shared/ui';
+import { StyledForm } from './RegisterForm.styled';
 
 export default function RegisterForm() {
   const {
@@ -15,7 +16,7 @@ export default function RegisterForm() {
   // watch('name');
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       {/* <CustomInput
         span={'Name:'}
         placeholder={'Ilona Ratushniak'}
@@ -39,13 +40,24 @@ export default function RegisterForm() {
       
       {errors.pass && <span>This field is required</span>} */}
       <CustomInput
-        register={register}
+        span={'Name:'}
+        placeholder={'Ilona Ratushniak'}
+        {...register('name')}
+      />
+      <CustomInput
+        span={'Mail:'}
+        placeholder={'Your@email.com'}
+        {...register('mail')}
+      />
+      <CustomInput
         span={'Password:'}
         placeholder={'Yourpasswordhere'}
         {...register('pass')}
       />
-      <input type="text" {...register('name')} />
-      <input type="submit" />
-    </form>
+      <div>
+        <Button variant={'register'}>Registration</Button>
+        <CustomLink>Already have an account?</CustomLink>
+      </div>
+    </StyledForm>
   );
 }

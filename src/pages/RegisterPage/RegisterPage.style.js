@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledForm = styled.form`
+export const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 14px;
+  row-gap: 10px;
 `;
