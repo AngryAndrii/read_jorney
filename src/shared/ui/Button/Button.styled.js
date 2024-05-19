@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledButton = styled.button`
   width: 100%;
   height: 100%;
+  border-radius: var(--radius-30);
 `;
 
 export const StyledRegisterButton = styled(StyledButton)`

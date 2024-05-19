@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     color: var(--color-secondary);
     background-color: var(--color-back);
     letter-spacing: 2%;
+    font-family: "GilroyMedium";
   }
 
   ul {
