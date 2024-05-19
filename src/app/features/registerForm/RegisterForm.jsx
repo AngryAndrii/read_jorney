@@ -54,9 +54,15 @@ export default function RegisterForm() {
         placeholder={'Yourpasswordhere'}
         {...register('pass')}
       />
-      <div>
-        <Button variant={'register'}>Registration</Button>
-        <CustomLink>Already have an account?</CustomLink>
+      <div className="under-section">
+        <div className="button-wrapper">
+          <Button type="submit" variant={'register'}>
+            Registration
+          </Button>
+        </div>
+        <CustomLink>
+          <p className="link">Already have an account?</p>
+        </CustomLink>
       </div>
     </StyledForm>
   );

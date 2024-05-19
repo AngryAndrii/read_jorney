@@ -16,12 +16,21 @@ const GlobalStyle = createGlobalStyle`
     --color-green: #30B94D;
     --radius-30: 30px;
   }
+
+  * {
+    box-sizing: border-box;
+  };
   
   body {
     color: var(--color-secondary);
     background-color: var(--color-back);
     letter-spacing: 2%;
     font-family: "GilroyMedium";
+  }
+
+  a {
+    color: inherit;
+    font-family: inherit;
   }
 
   ul {
