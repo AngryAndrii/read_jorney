@@ -40,16 +40,22 @@ export default function RegisterForm() {
       
       {errors.pass && <span>This field is required</span>} */}
       <CustomInput
+        // $name
+        type={'text'}
         span={'Name:'}
         placeholder={'Ilona Ratushniak'}
         {...register('name')}
       />
       <CustomInput
+        // $mail
+        type={'email'}
         span={'Mail:'}
         placeholder={'Your@email.com'}
         {...register('mail')}
       />
       <CustomInput
+        // $password
+        type={'password'}
         span={'Password:'}
         placeholder={'Yourpasswordhere'}
         {...register('pass')}
