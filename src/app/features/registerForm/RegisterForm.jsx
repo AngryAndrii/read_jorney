@@ -40,23 +40,35 @@ export default function RegisterForm() {
       
       {errors.pass && <span>This field is required</span>} */}
       <CustomInput
+        // $name
+        type={'text'}
         span={'Name:'}
         placeholder={'Ilona Ratushniak'}
         {...register('name')}
       />
       <CustomInput
+        // $mail
+        type={'email'}
         span={'Mail:'}
         placeholder={'Your@email.com'}
         {...register('mail')}
       />
       <CustomInput
+        // $password
+        type={'password'}
         span={'Password:'}
         placeholder={'Yourpasswordhere'}
         {...register('pass')}
       />
-      <div>
-        <Button variant={'register'}>Registration</Button>
-        <CustomLink>Already have an account?</CustomLink>
+      <div className="under-section">
+        <div className="button-wrapper">
+          <Button type="submit" variant={'register'}>
+            Registration
+          </Button>
+        </div>
+        <CustomLink>
+          <p className="link">Already have an account?</p>
+        </CustomLink>
       </div>
     </StyledForm>
   );
