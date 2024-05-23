@@ -13,16 +13,18 @@ export const StyledInput = styled.div`
     border: 1px solid rgba(0, 0, 0, 0);
     padding-top: 14px;
     padding-bottom: 14px;
-    padding-left: ${props => {
-      {
-        if (props.children[0].props.type == 'text') {
-          return '59px';
-        } else if (props.children[0].props.type == 'email') {
-          return '49px';
-        }
-        return '78px';
-      }
-    }};
+  }
+  //paddings
+  .userName {
+    padding-left: 62px;
+  }
+
+  .mail {
+    padding-left: 49px;
+  }
+
+  .password {
+    padding-left: 83px;
   }
 
   .span {
