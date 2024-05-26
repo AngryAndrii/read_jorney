@@ -28,6 +28,7 @@ export const StyledInput = styled.div`
   }
 
   .span {
+    color: var(--color-gray);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
