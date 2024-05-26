@@ -1,5 +1,5 @@
-import { StyledInput } from './Input.styled';
 import React from 'react';
+import { StyledInput } from './Input.styled';
 
 export const CustomInput = React.forwardRef(
   ({ placeholder, span, errors, type, ...inputProps }, register) => {
@@ -9,12 +9,12 @@ export const CustomInput = React.forwardRef(
           {span}
         </span>
         <input
-          className="input"
           type={type}
           ref={register}
           placeholder={placeholder}
           {...inputProps}
         />
+        {type === 'password' ? <span>lol</span> : null}
       </StyledInput>
     );
   }

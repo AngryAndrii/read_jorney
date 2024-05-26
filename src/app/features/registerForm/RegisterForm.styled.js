@@ -29,4 +29,11 @@ export const StyledForm = styled.form`
       white-space: nowrap;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    .button-wrapper {
+      width: 225px;
+      height: 52px;
+    }
+  }
 `;
