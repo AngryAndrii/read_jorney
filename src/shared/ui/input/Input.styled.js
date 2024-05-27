@@ -14,6 +14,11 @@ export const StyledInput = styled.div`
     padding-top: 14px;
     padding-bottom: 14px;
   }
+
+  ::placeholder {
+    color: var(--color-secondary);
+  }
+
   //paddings
   .userName {
     padding-left: 62px;
@@ -37,6 +42,8 @@ export const StyledInput = styled.div`
   }
 
   &:hover {
-    outline: 1px solid rgba(249, 249, 249, 0.1);
+    .input {
+      border: 1px solid rgba(249, 249, 249, 0.1);
+    }
   }
 `;
