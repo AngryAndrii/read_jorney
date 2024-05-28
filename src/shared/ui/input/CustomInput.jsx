@@ -14,7 +14,6 @@ export const CustomInput = React.forwardRef(
           placeholder={placeholder}
           {...inputProps}
         />
-        {type === 'password' ? <span>lol</span> : null}
       </StyledInput>
     );
   }
