@@ -8,11 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const schema = yup.object({
-  name: yup.string('name nust be a string').required('name is required'),
-  mail: yup
-    .string()
-    .email('Enter a valid Password*')
-    .required('email os required'),
+  name: yup.string('name nust be a string').min(3).required('name is required'),
+  mail: yup.string().email('Enter a valid email').required('email os required'),
   pass: yup.string().min(7).max(30).required(),
 });
 
@@ -23,6 +20,7 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    mode: 'onChange',
   });
 
   const onSubmit = data => console.log(data);
@@ -40,22 +38,26 @@ export default function RegisterForm() {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <CustomInput
-        className="userName input"
+        className={errors.name ? 'err userName input' : 'noerr userName input'}
         type={'text'}
         span={'Name:'}
         placeholder={'Ilona Ratushniak'}
         {...register('name')}
       />
+      <p>{errors.name?.message}</p>
       <CustomInput
-        className="mail input"
+        className={errors.mail ? 'err mail input' : 'noerr mail input'}
         type={'email'}
         span={'Mail:'}
         placeholder={'Your@email.com'}
         {...register('mail')}
       />
+      <p>{errors.mail?.message}</p>
       <div className="pass_cont">
         <CustomInput
-          className="password input"
+          className={
+            errors.pass ? 'err password input' : 'noerr password input'
+          }
           type={type}
           span={'Password:'}
           placeholder={'Yourpasswordhere'}
