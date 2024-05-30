@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledRegister = styled.div`
+export const StyledLogin = styled.div`
   background-color: var(--color-primary);
   border-radius: var(--radius-30);
   color: var(--color-secondary);

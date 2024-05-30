@@ -1,20 +1,18 @@
 import { useForm } from 'react-hook-form';
-import { Button, CustomInput, CustomLink } from '../../../shared/ui';
+import { useState } from 'react';
 import EyeOpen from '../../../assets/icons/eye.svg?react';
 import EyeClosed from '../../../assets/icons/eye-off.svg?react';
-import { StyledForm } from './RegisterForm.styled';
-import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Button, CustomInput, CustomLink } from '../../../shared/ui';
+import { StyledForm } from './LoginForm.styled';
 
 const schema = yup.object({
-  name: yup.string('name nust be a string').min(3).required('name is required'),
   mail: yup.string().email('Enter a valid email').required('email os required'),
   pass: yup.string().min(7).max(30).required(),
 });
 
-export default function RegisterForm() {
+export default function LoginForm() {
   const {
     register,
     handleSubmit,
@@ -38,13 +36,6 @@ export default function RegisterForm() {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <CustomInput
-        className={errors.name ? 'err userName input' : 'noerr userName input'}
-        type={'text'}
-        span={'Name:'}
-        placeholder={'Ilona Ratushniak'}
-        {...register('name')}
-      />
       <p className="error-message">{errors.name?.message}</p>
       <CustomInput
         className={errors.mail ? 'err mail input' : 'noerr mail input'}
@@ -78,11 +69,11 @@ export default function RegisterForm() {
       <div className="under-section">
         <div className="button-wrapper">
           <Button type="submit" variant={'register'}>
-            Registration
+            Log in
           </Button>
         </div>
-        <CustomLink href="/login">
-          <p className="link">Already have an account?</p>
+        <CustomLink href="/register">
+          <p className="link">Don’t have an account?</p>
         </CustomLink>
       </div>
     </StyledForm>

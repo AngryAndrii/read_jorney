@@ -14,4 +14,11 @@ export const StyledPhone = styled.div`
   @media screen and (min-width: 768px) {
     display: none;
   }
+
+  @media screen and (min-width: 1280px) {
+    display: block;
+    width: 600px;
+    padding: 80px 64px;
+    padding-bottom: 0;
+  }
 `;
