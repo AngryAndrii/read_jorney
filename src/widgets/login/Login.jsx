@@ -1,11 +1,11 @@
-import RegisterForm from '../../app/features/registerForm/RegisterForm';
+import LoginForm from '../../app/features/loginForm/LoginForm';
 import { Logo } from '../../shared/ui/';
 import { Title } from '../../shared/ui/';
-import { StyledRegister } from './Register.styled';
+import { StyledLogin } from './Login.styled';
 
-export const Register = () => {
+export const Login = () => {
   return (
-    <StyledRegister>
+    <StyledLogin>
       <div className="logo">
         <div className="logo-wrapper">
           <Logo />
@@ -13,7 +13,7 @@ export const Register = () => {
         <span className="logo-text title">read journey</span>
       </div>
       <Title />
-      <RegisterForm />
-    </StyledRegister>
+      <LoginForm />
+    </StyledLogin>
   );
 };

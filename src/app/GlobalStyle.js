@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     --color-gray-dark: #262626;
     --color-blue: #4f92f7;
     --color-green: #30B94D;
-    --color-red: 'red',
+    --color-red: #E90516;
     --radius-30: 30px;
   }
 

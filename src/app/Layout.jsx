@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 export const Layout = () => {
   let path = useLocation();
 
-  if (path.pathname == '/register') {
+  if (path.pathname == '/register' || path.pathname == '/login') {
     return (
       <Wrapper>
         <Outlet />
