@@ -1,17 +1,25 @@
 import { useForm } from 'react-hook-form';
-import { Button, CustomInput, CustomLink } from '../../../shared/ui';
-import EyeOpen from '../../../assets/icons/eye.svg?react';
-import EyeClosed from '../../../assets/icons/eye-off.svg?react';
+import { Button, CustomInput, CustomLink } from '../../shared/ui';
+import EyeOpen from '../../assets/icons/eye.svg?react';
+import EyeClosed from '../../assets/icons/eye-off.svg?react';
 import { StyledForm } from './RegisterForm.styled';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';
+import { UserApi } from '../../app/api/users';
 
 const schema = yup.object({
   name: yup.string('name nust be a string').min(3).required('name is required'),
-  mail: yup.string().email('Enter a valid email').required('email os required'),
-  pass: yup.string().min(7).max(30).required(),
+  email: yup
+    .string()
+    .email('Enter a valid email')
+    .required('email os required'),
+  password: yup
+    .string()
+    .min(7, 'password must be longer than 7 characters')
+    .max(30)
+    .required(),
 });
 
 export default function RegisterForm() {
@@ -24,7 +32,12 @@ export default function RegisterForm() {
     mode: 'onChange',
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = async data => {
+    console.log(data);
+    const resp = await UserApi.regUser(data);
+    console.log(resp);
+    return resp;
+  };
 
   const [type, setType] = useState('password');
 
@@ -47,22 +60,22 @@ export default function RegisterForm() {
       />
       <p className="error-message">{errors.name?.message}</p>
       <CustomInput
-        className={errors.mail ? 'err mail input' : 'noerr mail input'}
+        className={errors.email ? 'err mail input' : 'noerr mail input'}
         type={'email'}
         span={'Mail:'}
         placeholder={'Your@email.com'}
-        {...register('mail')}
+        {...register('email')}
       />
-      <p className="error-message">{errors.mail?.message}</p>
+      <p className="error-message">{errors.email?.message}</p>
       <div className="pass_cont">
         <CustomInput
           className={
-            errors.pass ? 'err password input' : 'noerr password input'
+            errors.password ? 'err password input' : 'noerr password input'
           }
           type={type}
           span={'Password:'}
           placeholder={'Yourpasswordhere'}
-          {...register('pass')}
+          {...register('password')}
         />
         <span
           className="eye"
@@ -73,7 +86,7 @@ export default function RegisterForm() {
           {type === 'password' ? <EyeClosed /> : <EyeOpen />}
         </span>
       </div>
-      <p className="error-message">{errors.pass?.message}</p>
+      <p className="error-message">{errors.password?.message}</p>
 
       <div className="under-section">
         <div className="button-wrapper">

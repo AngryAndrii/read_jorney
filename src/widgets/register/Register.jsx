@@ -1,4 +1,4 @@
-import RegisterForm from '../../app/features/registerForm/RegisterForm';
+import RegisterForm from '../../features/registerForm/RegisterForm';
 import { Logo } from '../../shared/ui/';
 import { Title } from '../../shared/ui/';
 import { StyledRegister } from './Register.styled';
