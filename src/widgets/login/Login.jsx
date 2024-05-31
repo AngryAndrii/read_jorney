@@ -1,4 +1,4 @@
-import LoginForm from '../../app/features/loginForm/LoginForm';
+import LoginForm from '../../features/loginForm/LoginForm';
 import { Logo } from '../../shared/ui/';
 import { Title } from '../../shared/ui/';
 import { StyledLogin } from './Login.styled';

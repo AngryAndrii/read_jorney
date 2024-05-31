@@ -1,15 +1,19 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import EyeOpen from '../../../assets/icons/eye.svg?react';
-import EyeClosed from '../../../assets/icons/eye-off.svg?react';
+import EyeOpen from '../../assets/icons/eye.svg?react';
+import EyeClosed from '../../assets/icons/eye-off.svg?react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Button, CustomInput, CustomLink } from '../../../shared/ui';
+import { Button, CustomInput, CustomLink } from '../../shared/ui';
 import { StyledForm } from './LoginForm.styled';
+import { UserApi } from '../../app/api/users';
 
 const schema = yup.object({
-  mail: yup.string().email('Enter a valid email').required('email os required'),
-  pass: yup.string().min(7).max(30).required(),
+  email: yup
+    .string()
+    .email('Enter a valid email')
+    .required('email os required'),
+  password: yup.string().min(7).max(30).required(),
 });
 
 export default function LoginForm() {
@@ -22,7 +26,12 @@ export default function LoginForm() {
     mode: 'onChange',
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = async data => {
+    console.log(data);
+    const resp = await UserApi.loginUser(data);
+    console.log(resp);
+    return resp;
+  };
 
   const [type, setType] = useState('password');
 
@@ -36,15 +45,14 @@ export default function LoginForm() {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <p className="error-message">{errors.name?.message}</p>
       <CustomInput
-        className={errors.mail ? 'err mail input' : 'noerr mail input'}
+        className={errors.email ? 'err mail input' : 'noerr mail input'}
         type={'email'}
         span={'Mail:'}
         placeholder={'Your@email.com'}
-        {...register('mail')}
+        {...register('email')}
       />
-      <p className="error-message">{errors.mail?.message}</p>
+      <p className="error-message">{errors.email?.message}</p>
       <div className="pass_cont">
         <CustomInput
           className={
@@ -53,7 +61,7 @@ export default function LoginForm() {
           type={type}
           span={'Password:'}
           placeholder={'Yourpasswordhere'}
-          {...register('pass')}
+          {...register('password')}
         />
         <span
           className="eye"
@@ -64,7 +72,7 @@ export default function LoginForm() {
           {type === 'password' ? <EyeClosed /> : <EyeOpen />}
         </span>
       </div>
-      <p className="error-message">{errors.pass?.message}</p>
+      <p className="error-message">{errors.password?.message}</p>
 
       <div className="under-section">
         <div className="button-wrapper">
