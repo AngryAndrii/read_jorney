@@ -11,4 +11,16 @@ export class UserApi extends Api {
   static async loginUser(data) {
     return this.post('/users/signin', data);
   }
+
+  static async currentUser(token) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    console.log(config);
+    const resp = this.get('./users/current', config);
+    console.log(resp);
+    return resp;
+  }
 }

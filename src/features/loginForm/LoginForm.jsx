@@ -29,6 +29,14 @@ export default function LoginForm() {
   const onSubmit = async data => {
     console.log(data);
     const resp = await UserApi.loginUser(data);
+    localStorage.setItem('token', resp.data.token);
+    console.log(resp);
+    return resp;
+  };
+
+  const curUser = async () => {
+    const token = localStorage.getItem('token');
+    const resp = await UserApi.currentUser(token);
     console.log(resp);
     return resp;
   };
@@ -83,6 +91,12 @@ export default function LoginForm() {
         <CustomLink href="/register">
           <p className="link">Don’t have an account?</p>
         </CustomLink>
+        <button
+          type="button"
+          onClick={() => {
+            curUser();
+          }}
+        ></button>
       </div>
     </StyledForm>
   );
