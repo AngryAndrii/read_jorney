@@ -9,8 +9,8 @@ export class Api {
     return axiosClient.post(url, data);
   }
 
-  static async get(url) {
-    return axiosClient.get(url);
+  static async get(url, data) {
+    return axiosClient.get(url, data);
   }
 
   static async put(url, data) {
