@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { Button, CustomInput, CustomLink } from '../../shared/ui';
 import { StyledForm } from './LoginForm.styled';
 import { UserApi } from '../../app/api/users';
+import axios from 'axios';
 
 const schema = yup.object({
   email: yup
@@ -29,6 +30,12 @@ export default function LoginForm() {
   const onSubmit = async data => {
     console.log(data);
     const resp = await UserApi.loginUser(data);
+    return resp;
+  };
+
+  const curUser = async () => {
+    // const token = localStorage.getItem('token');
+    const resp = await UserApi.currentUser();
     console.log(resp);
     return resp;
   };
@@ -83,6 +90,14 @@ export default function LoginForm() {
         <CustomLink href="/register">
           <p className="link">Don’t have an account?</p>
         </CustomLink>
+        <button
+          type="button"
+          onClick={() => {
+            curUser();
+          }}
+        >
+          curent
+        </button>
       </div>
     </StyledForm>
   );
