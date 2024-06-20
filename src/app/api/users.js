@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Api } from './api';
+import { Api, setAuthHeader } from './api';
 
 export class UserApi extends Api {
   static async regUser(data) {
@@ -8,17 +8,17 @@ export class UserApi extends Api {
 
   static async loginUser(data) {
     const resp = await this.post('/users/signin', data);
+    setAuthHeader(resp.data.token);
     localStorage.setItem('token', resp.data.token);
-    axios.defaults.headers.common = {
-      Authorization: `Bearer ${resp.data.token}`,
-    };
-    console.log(resp);
     return resp;
   }
 
   static async currentUser() {
-    const resp = await this.get('/users/current');
-    console.log(resp.data);
-    return resp.data;
+    try {
+      const resp = await this.get('/users/current');
+      return resp.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
