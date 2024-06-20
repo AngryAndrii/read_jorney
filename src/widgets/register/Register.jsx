@@ -1,6 +1,6 @@
-import RegisterForm from '../../features/registerForm/RegisterForm';
-import { Logo } from '../../shared/ui/';
-import { Title } from '../../shared/ui/';
+import RegisterForm from 'src/features/registerForm/RegisterForm';
+import { Logo } from 'src/shared/ui/';
+import { Title } from 'src/shared/ui/';
 import { StyledRegister } from './Register.styled';
 
 export const Register = () => {

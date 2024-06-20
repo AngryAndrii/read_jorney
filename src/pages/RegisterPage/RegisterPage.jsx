@@ -1,6 +1,6 @@
-import { Container } from '../../shared';
-import { Phone } from '../../widgets/phone/Phone';
-import { Register } from '../../widgets/register/Register';
+import { Container } from 'src/shared';
+import { Phone } from 'src/widgets/phone/Phone';
+import { Register } from 'src/widgets/register/Register';
 import { StyledWrapper } from './RegisterPage.style';
 
 export const RegisterPage = () => {

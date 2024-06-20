@@ -4,13 +4,21 @@ export const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
 });
 
+export const setAuthHeader = token => {
+  axiosClient.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+export const clearAuthHeader = () => {
+  axiosClient.defaults.headers.common.Authorization = '';
+};
+
 export class Api {
   static async post(url, data) {
     return axiosClient.post(url, data);
   }
 
-  static async get(url, data) {
-    return axiosClient.get(url, data);
+  static async get(url) {
+    return axiosClient.get(url);
   }
 
   static async put(url, data) {

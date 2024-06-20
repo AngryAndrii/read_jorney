@@ -1,13 +1,12 @@
 import { useForm } from 'react-hook-form';
-import { Button, CustomInput, CustomLink } from '../../shared/ui';
-import EyeOpen from '../../assets/icons/eye.svg?react';
-import EyeClosed from '../../assets/icons/eye-off.svg?react';
+import { Button, CustomInput, CustomLink } from 'src/shared/ui';
+import EyeOpen from 'src/assets/icons/eye.svg?react';
+import EyeClosed from 'src/assets/icons/eye-off.svg?react';
 import { StyledForm } from './RegisterForm.styled';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Link } from 'react-router-dom';
-import { UserApi } from '../../app/api/users';
+import { UserApi } from 'src/app/api/users';
 
 const schema = yup.object({
   name: yup.string('name nust be a string').min(3).required('name is required'),

@@ -1,6 +1,6 @@
-import LoginForm from '../../features/loginForm/LoginForm';
-import { Logo } from '../../shared/ui/';
-import { Title } from '../../shared/ui/';
+import LoginForm from 'src/features/loginForm/LoginForm';
+import { Logo } from 'src/shared/ui/';
+import { Title } from 'src/shared/ui/';
 import { StyledLogin } from './Login.styled';
 
 export const Login = () => {
