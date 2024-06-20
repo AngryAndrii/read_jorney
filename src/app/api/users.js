@@ -17,18 +17,6 @@ export class UserApi extends Api {
   }
 
   static async currentUser() {
-    // let tok = token;
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${tok}`,
-    //     Accept: 'application/json',
-    //   },
-    // };
-    // console.log(config);
-    // const resp = await axios.get(
-    //   'https://readjourney.b.goit.study/api/users/current',
-    //   config
-    // );
     const resp = await this.get('/users/current');
     console.log(resp.data);
     return resp.data;

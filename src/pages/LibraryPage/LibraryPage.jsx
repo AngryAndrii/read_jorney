@@ -1,4 +1,4 @@
-import { Layout } from '../../app/Layout';
+import { Layout } from 'src/app/Layout';
 
 export const LibraryPage = () => {
   return <> Library page</>;

@@ -1,13 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import EyeOpen from '../../assets/icons/eye.svg?react';
-import EyeClosed from '../../assets/icons/eye-off.svg?react';
+import EyeOpen from 'src/assets/icons/eye.svg?react';
+import EyeClosed from 'src/assets/icons/eye-off.svg?react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Button, CustomInput, CustomLink } from '../../shared/ui';
+import { Button, CustomInput, CustomLink } from 'src/shared';
 import { StyledForm } from './LoginForm.styled';
-import { UserApi } from '../../app/api/users';
-import axios from 'axios';
+import { UserApi } from 'src/app/api/users';
 
 const schema = yup.object({
   email: yup
