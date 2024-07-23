@@ -6,7 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, CustomInput, CustomLink } from 'src/shared';
 import { StyledForm } from './LoginForm.styled';
-import { UserApi } from 'src/app/api/users';
+import { useStore } from 'src/app/zustand/store';
+import { setAuthHeader } from 'src/app/api/api';
+import { currentUser, loginUser } from 'src/app/api/users';
 
 const schema = yup.object({
   email: yup
@@ -17,6 +19,9 @@ const schema = yup.object({
 });
 
 export default function LoginForm() {
+  const token = useStore(state => state.token);
+  const changeToken = useStore(state => state.setToken);
+
   const {
     register,
     handleSubmit,
@@ -28,15 +33,20 @@ export default function LoginForm() {
 
   const onSubmit = async data => {
     console.log(data);
-    const resp = await UserApi.loginUser(data);
+    const resp = await loginUser(data);
+    changeToken(resp.data.token);
     return resp;
   };
 
   const curUser = async () => {
     // const token = localStorage.getItem('token');
-    const resp = await UserApi.currentUser();
+    const resp = await currentUser();
     console.log(resp);
     return resp;
+  };
+
+  const addUser = () => {
+    setAuthHeader();
   };
 
   const [type, setType] = useState('password');
@@ -96,6 +106,14 @@ export default function LoginForm() {
           }}
         >
           curent
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            addUser();
+          }}
+        >
+          AddUser
         </button>
       </div>
     </StyledForm>
