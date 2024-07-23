@@ -6,7 +6,7 @@ import { StyledForm } from './RegisterForm.styled';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { UserApi } from 'src/app/api/users';
+import { regUser } from 'src/app/api/users';
 
 const schema = yup.object({
   name: yup.string('name nust be a string').min(3).required('name is required'),
@@ -33,7 +33,7 @@ export default function RegisterForm() {
 
   const onSubmit = async data => {
     console.log(data);
-    const resp = await UserApi.regUser(data);
+    const resp = await regUser(data);
     console.log(resp);
     return resp;
   };

@@ -6,7 +6,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, CustomInput, CustomLink } from 'src/shared';
 import { StyledForm } from './LoginForm.styled';
-import { UserApi } from 'src/app/api/users';
+import { useStore } from 'src/app/zustand/store';
+import { setAuthHeader } from 'src/app/api/api';
+import { currentUser, loginUser } from 'src/app/api/users';
+import { redirect, useNavigate } from 'react-router-dom';
 
 const schema = yup.object({
   email: yup
@@ -17,6 +20,12 @@ const schema = yup.object({
 });
 
 export default function LoginForm() {
+  const token = useStore(state => state.token);
+  const changeToken = useStore(state => state.setToken);
+  const user = useStore(state => state.user);
+  const changeUser = useStore(state => state.setUser);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -28,15 +37,25 @@ export default function LoginForm() {
 
   const onSubmit = async data => {
     console.log(data);
-    const resp = await UserApi.loginUser(data);
+    const resp = await loginUser(data);
+    changeUser(resp.data.name);
+    changeToken(resp.data.token);
+    if (user != null) {
+      console.log('is user');
+      console.log(user);
+      navigate('/');
+    }
     return resp;
   };
 
   const curUser = async () => {
-    // const token = localStorage.getItem('token');
-    const resp = await UserApi.currentUser();
+    const resp = await currentUser();
     console.log(resp);
     return resp;
+  };
+
+  const addUser = () => {
+    setAuthHeader();
   };
 
   const [type, setType] = useState('password');
@@ -96,6 +115,14 @@ export default function LoginForm() {
           }}
         >
           curent
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            addUser();
+          }}
+        >
+          AddUser
         </button>
       </div>
     </StyledForm>
