@@ -5,7 +5,9 @@ export const useStore = create(
   persist(
     (set, get) => ({
       token: null,
+      user: null,
       setToken: token => set(() => ({ token: token })),
+      setUser: user => set(() => ({ user: user })),
     }),
     {
       name: 'readJorneyToken',
