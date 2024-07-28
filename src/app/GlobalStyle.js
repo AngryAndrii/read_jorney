@@ -44,6 +44,12 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1;
   }
 
+  button {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
 `;
 
 export default GlobalStyle;

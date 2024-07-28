@@ -8,4 +8,12 @@ export const StyledWrapper = styled.div`
   @media screen and (min-width: 768px) {
     padding: 32px;
   }
+
+  /* .bm-burger-button {
+    position: absolute;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+  } */
 `;
